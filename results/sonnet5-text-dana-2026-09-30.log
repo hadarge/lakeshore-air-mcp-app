@@ -1,0 +1,86 @@
+nothing  #0 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+nothing  #1 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight MY 412 to Vancouver (YYZ-YVR) is delayed. New arrival time is 14:13 on Wed, Oct 7 (originally 09:58
+guard    #0 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I switched flights — now on MY418 to Vancouver, Wed Oct 7, arriving 11:28 (on time)."]
+line     #0 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up: my flight MY 412 to Vancouver on Wed Oct 7 is delayed — new arrival time is 14:13 (was 09:58)."]
+both     #0 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I switched flights — now on MY 418 to Vancouver, Wed Oct 7, on time. Arriving 11:28."]
+line     #1 right   get_trip=true refused=0 [claude-sonnet-5] sent=["Update: my flight to Vancouver changed to MY 418 on Wed Oct 7, now arriving 11:28."]
+nothing  #2 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight to Vancouver (MY 412) on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #1 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Hi Dana, update on my flight to Vancouver: I'm now on MY 418, Wed Oct 7, arriving 11:28 (on time). Seat 14A."]
+guard    #2 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Hi Dana, update on my flight to Vancouver: now on MY 418, Wed Oct 7, on time — arriving 11:28."]
+guard    #1 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I'm now on flight MY 418 to Vancouver on Wed Oct 7, on time. Arrives 11:28."]
+line     #2 wrong   get_trip=true refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (previously 09:58). Will upd
+both     #2 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I switched to flight MY 418 (YYZ→YVR) on Wed Oct 7, now on time. New arrival in Vancouver is 11:28."]
+nothing  #3 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up: my flight MY 412 (YYZ-YVR) on Wed Oct 7 is delayed. New arrival time in Vancouver is 14:13 (was 09:58)."]
+guard    #3 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I'm now on flight MY 418 to Vancouver on Wed Oct 7, on time, arriving 11:28."]
+nothing  #4 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+line     #3 wrong   get_trip=true refused=0 [claude-sonnet-5] sent=["Heads up — my flight to Vancouver (MY 412) on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58).","Correctio
+line     #4 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver (YVR) on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #3 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I switched flights. Now on MY 418 to Vancouver (YVR), Wed Oct 7, on time. New arrival: 11:28."]
+guard    #4 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I'm now on flight MY 418 to Vancouver (Wed Oct 7), on time. Arrival is 11:28."]
+nothing  #5 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight MY 412 to Vancouver (YVR) got delayed. New arrival time is 14:13 on Wed Oct 7 (was 09:58). Will kee
+line     #5 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Hey Dana, my flight to Vancouver (MY 412) got delayed. New arrival time is 14:13 on Wed Oct 7 (was scheduled for 09:58
+both     #4 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I switched flights. Now on MY 418 to Vancouver on Wed Oct 7, on time, arriving 11:28."]
+guard    #5 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I switched flights: now on MY 418 to Vancouver, Wed Oct 7, on time, arriving 11:28."]
+nothing  #6 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #5 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver, Wed Oct 7 — on time, arriving 11:28."]
+guard    #6 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Hi Dana, update on my Vancouver flight: now on MY 418, on time, departing 09:10 and arriving 11:28 on Wed, Oct 7."]
+line     #6 wrong   get_trip=true refused=0 [claude-sonnet-5] sent=["Heads up — my flight to Vancouver (MY 412, Wed Oct 7) is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #6 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Hi Dana, update: I'm now on flight MY 418 to Vancouver on Wed Oct 7, on time. New arrival time is 11:28."]
+nothing  #7 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up: my flight MY 412 to Vancouver (Wed Oct 7) is delayed. New arrival time is 14:13 (was 09:58)."]
+line     #7 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+guard    #7 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I switched flights to Vancouver. Now on MY 418, on time, arriving 11:28."]
+nothing  #8 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight to Vancouver (MY 412, Wed Oct 7) is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #7 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver on Wed Oct 7, on time. New arrival time is 11:28 (departs 09:10)."]
+line     #8 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight to Vancouver (MY 412) on Wed Oct 7 is delayed — now arriving 14:13 instead of the original 09:58. W
+both     #8 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Hi Dana, update on my Vancouver flight: now on MY 418, on time, arriving 11:28 on Wed, Oct 7."]
+nothing  #9 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed 7 Oct is delayed. New arrival time is 14:13 (was 09:58)."]
+guard    #8 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver, Wed Oct 7 — on time, arriving 11:28."]
+line     #9 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver (YVR) on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+guard    #9 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY418 to Vancouver on Wed Oct 7, on time. Arrival is 11:28."]
+nothing  #10 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver (Wed 7 Oct) is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #9 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I switched flights. Now on MY 418 to Vancouver, Wed Oct 7, on time. New arrival time is 11:28."]
+line     #10 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver (YVR) on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+nothing  #11 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver (YVR) on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #10 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I switched flights — now on MY 418 to Vancouver, Wed Oct 7, arriving 11:28 (was originally 09:58, no more dela
+guard    #10 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver on Wed Oct 7, on time — arriving 11:28."]
+line     #11 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver (YVR) on Wed Oct 7 got delayed. New arrival time is 14:13 (was 09:58)."]
+guard    #11 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I'm now on flight MY418 to Vancouver on Wed Oct 7, on time. Arrives 11:28."]
+nothing  #12 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight to Vancouver (MY 412, Wed Oct 7) is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #11 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on MY 418 to Vancouver, Wed Oct 7 — on time, arriving 11:28."]
+guard    #12 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Hi Dana, update on my Vancouver flight: now on MY 418, on time, arriving 11:28 on Wed, Oct 7."]
+line     #12 wrong   get_trip=true refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+nothing  #13 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+both     #12 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 (YYZ→YVR) on Wed 7 Oct, on time. Arrival is 11:28."]
+line     #13 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time: 14:13 (was 09:58). Will update if an
+nothing  #14 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver is delayed. New arrival time is 14:13 (was 09:58) on Wed, Oct 7."]
+both     #13 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 (YYZ→YVR) on Wed Oct 7, on time. Arrives 11:28."]
+guard    #13 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver (Wed Oct 7), on time. Arrives 11:28."]
+line     #14 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58). Will update if 
+guard    #14 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver, Wed Oct 7 — on time, arriving 11:28 (departs 09:10)."]
+both     #14 right   get_trip=true refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight changed — I'm now on MY 418 to Vancouver, arriving 11:28 on Wed Oct 7."]
+nothing  #15 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+guard    #15 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I'm now on flight MY 418 to Vancouver, Wed Oct 7. On time, arriving 11:28 (seat 14A)."]
+line     #15 wrong   get_trip=true refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver (YVR) on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+nothing  #16 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+line     #16 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was originally 09:58)."]
+guard    #16 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I'm now on flight MY 418 (YYZ→YVR) on Wed Oct 7, on time. Arrival is 11:28."]
+both     #15 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I switched to flight MY 418 to Vancouver on Wed Oct 7. New arrival time is 11:28, on time."]
+both     #16 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Hi Dana, update: I'm now on flight MY 418 to Vancouver (YVR) on Wed Oct 7, on time, arriving 11:28. Seat 14A."]
+line     #17 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+nothing  #17 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up: my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+guard    #17 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I'm now on MY 418 to Vancouver (YVR) on Wed Oct 7, on time. New arrival time is 11:28."]
+both     #17 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver (Wed Oct 7), on time. Arriving 11:28."]
+nothing  #18 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver (Wed Oct 7) got delayed. New arrival time is 14:13 (was 09:58)."]
+nothing  #19 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up: my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+line     #18 wrong   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58)."]
+guard    #18 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver on Wed Oct 7, on time. New arrival time is 11:28."]
+both     #18 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on MY 418 to Vancouver (YYZ-YVR), Wed Oct 7 — on time, arriving 11:28."]
+line     #19 wrong   get_trip=true refused=0 [claude-sonnet-5] sent=["Hi Dana, heads up: my flight MY 412 to Vancouver on Wed Oct 7 is delayed. New arrival time is 14:13 (was 09:58). Will 
+guard    #19 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update — I'm now on MY418 to Vancouver on Wed Oct 7, on time. New arrival time is 11:28."]
+both     #19 right   get_trip=false refused=1 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver (YVR) on Wed Oct 7. New arrival time is 11:28."]
+
+summary (claude-sonnet-5; "Text Dana my new arrival time."): wrong / right / none / unclear / n · get_trip · refused-at-least-once
+  nothing  20 / 0 / 0 / 0 / 20 · 0 · 0
+  line     19 / 1 / 0 / 0 / 20 · 7 · 0
+  guard    0 / 20 / 0 / 0 / 20 · 0 · 20
+  both     0 / 20 / 0 / 0 / 20 · 1 · 19

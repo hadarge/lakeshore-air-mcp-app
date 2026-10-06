@@ -1,0 +1,162 @@
+/* Lakeshore Air · trip view. Host theme variables win; the brand is purple accents on the host's surface.
+   System fonts for text (custom web fonts didn't render in Claude for us). One inlined serif for the
+   wordmark; if a host's CSP refuses it, the serif fallbacks take over. */
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("./fonts/instrument-serif-latin.woff2") format("woff2");
+}
+:root {
+  --ink: var(--color-text-primary, #141416);
+  --muted: var(--color-text-secondary, #62626e);
+  --faint: var(--color-text-tertiary, #9a9aa6);
+  --bg: var(--color-background-primary, #ffffff);
+  --surface: var(--color-background-secondary, #f7f5fc);
+  --line: var(--color-border-primary, rgba(20, 20, 22, 0.1));
+  --line-soft: var(--color-border-secondary, rgba(20, 20, 22, 0.06));
+  --purple: #8039fd;
+  --purple-ink: #6a24e8;
+  --purple-soft: rgba(128, 57, 253, 0.09);
+  --orange: #e8622a;
+  --orange-soft: rgba(255, 134, 81, 0.14);
+  --green: #12925f;
+  --green-soft: rgba(20, 160, 107, 0.12);
+  --red: #d9433a;
+  --pass-bg: linear-gradient(135deg, #1b1030 0%, #141416 55%, #0a0a0a 100%);
+  --shadow: 0 1px 2px rgba(20, 20, 22, 0.05), 0 10px 28px -14px rgba(40, 20, 90, 0.28);
+  --sans: var(--font-sans, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+  --serif: "Instrument Serif", "Iowan Old Style", ui-serif, Georgia, "Times New Roman", serif;
+  --mono: var(--font-mono, ui-monospace, "SF Mono", Menlo, Consolas, monospace);
+  color-scheme: light;
+  font-family: var(--sans);
+}
+:root[data-theme="dark"] {
+  --ink: var(--color-text-primary, #f4f2fa);
+  --muted: var(--color-text-secondary, #a1a1aa);
+  --faint: var(--color-text-tertiary, #71717a);
+  --bg: var(--color-background-primary, #141416);
+  --surface: var(--color-background-secondary, #1e1e23);
+  --line: var(--color-border-primary, rgba(255, 255, 255, 0.12));
+  --line-soft: var(--color-border-secondary, rgba(255, 255, 255, 0.07));
+  --purple-ink: #b48bff;
+  --purple-soft: rgba(163, 151, 245, 0.14);
+  --orange: #ff9a6b;
+  --green: #3ddc97;
+  --green-soft: rgba(61, 220, 151, 0.14);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: var(--color-text-primary, #f4f2fa);
+    --muted: var(--color-text-secondary, #a1a1aa);
+    --faint: var(--color-text-tertiary, #71717a);
+    --bg: var(--color-background-primary, #141416);
+    --surface: var(--color-background-secondary, #1e1e23);
+    --line: var(--color-border-primary, rgba(255, 255, 255, 0.12));
+    --line-soft: var(--color-border-secondary, rgba(255, 255, 255, 0.07));
+    --purple-ink: #b48bff;
+    --purple-soft: rgba(163, 151, 245, 0.14);
+    --orange: #ff9a6b;
+    --green: #3ddc97;
+    --green-soft: rgba(61, 220, 151, 0.14);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -14px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { background: var(--bg); }
+body { margin: 0; color: var(--ink); font: 400 14px/1.45 var(--sans); -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+
+.app { padding: 16px; display: flex; flex-direction: column; gap: 14px; max-width: 760px; margin: 0 auto; }
+.app[aria-busy="true"] { opacity: 0.4; }
+
+/* ---------- header ---------- */
+.hdr { display: flex; align-items: center; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.mark { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: #fff; background: linear-gradient(135deg, #8039fd, #c26bff 65%, #ff8651); box-shadow: 0 6px 14px -6px rgba(128, 57, 253, 0.7); }
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.brand-text strong { font: 400 21px/1 var(--serif); letter-spacing: 0.005em; }
+.brand-text .sub { font-size: 12.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 3px; }
+.pill { margin-left: auto; flex: none; display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 12px 0 10px; border-radius: 999px; font: 600 12.5px/1 var(--sans); white-space: nowrap; }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.pill[data-tone="wait"] { color: var(--orange); background: var(--orange-soft); }
+.pill[data-tone="ok"] { color: var(--green); background: var(--green-soft); }
+
+/* ---------- the boarding-pass card ---------- */
+.pass { position: relative; overflow: hidden; border-radius: 18px; padding: 16px 20px 18px; background: var(--pass-bg); color: #f4f2fa; box-shadow: var(--shadow); isolation: isolate; transition: box-shadow 0.4s; }
+.pass::before { content: ""; position: absolute; z-index: -1; width: 380px; height: 380px; right: -120px; top: -210px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 134, 81, 0.28), rgba(128, 57, 253, 0.2) 55%, transparent); }
+.pass[data-state="ok"]::before { background: radial-gradient(closest-side, rgba(201, 160, 255, 0.34), rgba(128, 57, 253, 0.18) 55%, transparent); }
+.pass.flash { box-shadow: 0 0 0 3px rgba(61, 220, 151, 0.55), var(--shadow); }
+.pass-top { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 12.5px; color: #c9c5d6; }
+.pass-top .fl { font: 600 12.5px var(--mono); color: #fff; padding: 3px 8px; border-radius: 6px; background: rgba(255, 255, 255, 0.1); }
+.pass-top b { color: #fff; font-weight: 600; }
+.pass-top .dot { width: 3px; height: 3px; border-radius: 50%; background: #6b6b76; }
+.changed-from { margin-left: auto; font-size: 12px; color: #d9c7ff; }
+.route { display: grid; grid-template-columns: auto minmax(60px, 1fr) auto; align-items: end; gap: 16px; margin-top: 14px; }
+.end { display: flex; flex-direction: column; gap: 1px; }
+.end.right { text-align: right; align-items: flex-end; }
+.code { font: 600 30px/1 var(--sans); letter-spacing: 0.02em; }
+.city { font-size: 12.5px; color: #a9a5b6; }
+.time { margin-top: 8px; display: flex; align-items: baseline; gap: 8px; font: 600 26px/1 var(--sans); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.end.right .time { justify-content: flex-end; }
+.time s { font-size: 15px; font-weight: 500; color: #8a8696; text-decoration-thickness: 1.5px; }
+.time s:empty { display: none; }
+.pass[data-state="delayed"] .time span { color: #ffb38f; }
+.path { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; padding-bottom: 6px; }
+.path .line { position: absolute; left: 0; right: 0; top: 8px; border-top: 1.5px dashed rgba(255, 255, 255, 0.28); }
+.path .plane { position: relative; display: grid; place-items: center; width: 26px; height: 18px; color: #fff; background: #17121f; border-radius: 9px; }
+.pass[data-state="ok"] .path .plane { background: #16131c; }
+.path .dur { font-size: 11.5px; color: #a9a5b6; white-space: nowrap; }
+.notice { margin: 14px 0 0; padding: 10px 12px; border-radius: 11px; background: rgba(255, 134, 81, 0.13); color: #ffd9c7; font-size: 12.5px; line-height: 1.45; }
+.notice b { color: #ffb38f; font-weight: 600; }
+
+/* ---------- options ---------- */
+.options { display: flex; flex-direction: column; gap: 10px; }
+.opt-head { display: flex; align-items: baseline; gap: 10px; }
+.opt-head h3 { margin: 0; font-size: 14.5px; font-weight: 650; letter-spacing: -0.005em; }
+.free { font-size: 12px; font-weight: 600; color: var(--green); }
+.opt-list { display: flex; flex-direction: column; gap: 8px; }
+.opt { display: grid; grid-template-columns: 20px minmax(0, auto) 1fr auto; grid-template-areas: "radio times delta price" "radio meta seats price"; align-items: center; column-gap: 12px; row-gap: 2px; width: 100%; text-align: left; padding: 11px 14px; border-radius: 13px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; transition: border-color 0.15s, background 0.15s, box-shadow 0.15s; }
+.opt:hover:not(:disabled) { border-color: color-mix(in srgb, var(--purple) 45%, var(--line)); }
+.opt[aria-checked="true"] { border-color: var(--purple); background: var(--purple-soft); box-shadow: 0 0 0 1px var(--purple) inset; }
+.opt:disabled { opacity: 0.5; cursor: default; }
+.radio { grid-area: radio; width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--faint); display: grid; place-items: center; }
+.opt[aria-checked="true"] .radio { border-color: var(--purple); }
+.opt[aria-checked="true"] .radio::after { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--purple); }
+.o-times { grid-area: times; display: flex; align-items: baseline; gap: 6px; font-size: 16px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.o-times b { font-weight: 650; }
+.o-times .arrow { color: var(--faint); font-size: 13px; }
+.o-meta { grid-area: meta; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.o-delta { grid-area: delta; justify-self: end; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.o-delta[data-dir="earlier"] { color: var(--green); }
+.o-delta[data-dir="later"] { color: var(--muted); }
+.o-seats { grid-area: seats; justify-self: end; font-size: 12px; color: var(--muted); white-space: nowrap; }
+.o-price { grid-area: price; font: 650 15px var(--sans); padding-left: 6px; }
+
+/* ---------- footer ---------- */
+.foot { display: flex; align-items: center; gap: 12px; padding-top: 2px; }
+.meta { font: 500 11.5px var(--mono); color: var(--faint); white-space: nowrap; }
+.status { flex: 1; min-width: 0; text-align: right; font-size: 12.5px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.status[data-tone="ok"] { color: var(--green); font-weight: 600; }
+.status[data-tone="error"] { color: var(--red); }
+.btn { flex: none; height: 38px; padding: 0 18px; border: 0; border-radius: 999px; background: var(--purple); color: #fff; font-weight: 600; font-size: 14px; cursor: pointer; box-shadow: 0 8px 20px -10px rgba(128, 57, 253, 0.9); transition: background 0.15s, opacity 0.15s; }
+.btn:hover:not(:disabled) { background: #6a24e8; }
+.btn:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.ghost:hover:not(:disabled) { background: var(--surface); }
+
+@media (max-width: 520px) {
+  .app { padding: 12px; }
+  .opt { grid-template-columns: 20px 1fr auto; grid-template-areas: "radio times price" "radio meta price" "radio delta price"; }
+  .o-delta, .o-seats { justify-self: start; }
+  .o-seats { display: none; }
+  .foot { flex-wrap: wrap; }
+  .status { order: 3; flex-basis: 100%; text-align: left; }
+  .btn { margin-left: auto; }
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f2f2f7">
+<title>Messages · Keren</title>
+<style>
+  :root { --bg: #ffffff; --ink: #0a0a0a; --muted: #8e8e93; --line: #e5e5ea; --in: #e9e9eb; --purple: #8039fd; --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #f2f2f7; }
+  body { font: 400 16px/1.35 var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; justify-content: center; }
+  .phone { width: 100%; max-width: 440px; min-height: 100vh; background: var(--bg); display: flex; flex-direction: column; }
+  @media (min-width: 600px) {
+    body { align-items: center; padding: 32px 16px; background: radial-gradient(circle at 30% 20%, rgba(201,160,255,.35), transparent 55%), #0a0a0a; }
+    .phone { min-height: 0; height: 860px; border-radius: 52px; overflow: hidden; box-shadow: 0 0 0 11px #1c1c1f, 0 0 0 13px #3a3a42, 0 40px 80px -30px rgba(0,0,0,.8); }
+  }
+  .status { display: flex; justify-content: space-between; align-items: center; padding: 14px 30px 6px; font-weight: 600; font-size: 15px; }
+  .status .icons { display: flex; gap: 6px; align-items: center; }
+  .head { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 8px 16px 12px; border-bottom: 1px solid var(--line); background: rgba(249,249,251,.94); position: relative; }
+  .head .back { position: absolute; left: 14px; top: 22px; color: #007aff; font-size: 17px; display: flex; align-items: center; gap: 2px; }
+  .head .av { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; color: #fff; background: linear-gradient(135deg, #8039fd, #c26bff 65%, #ff8651); }
+  .head b { font-size: 13px; font-weight: 500; }
+  .head small { font-size: 11.5px; color: var(--muted); margin-top: -3px; }
+  .thread { flex: 1; overflow-y: auto; padding: 14px 14px 20px; display: flex; flex-direction: column; gap: 4px; }
+  .day { text-align: center; font-size: 11.5px; color: var(--muted); margin: 10px 0 8px; }
+  .day b { font-weight: 600; }
+  .bubble { max-width: 78%; align-self: flex-start; background: var(--in); padding: 9px 14px; border-radius: 19px; font-size: 16.5px; line-height: 1.32; white-space: pre-wrap; word-wrap: break-word; animation: pop .35s cubic-bezier(.2,.9,.3,1.3); }
+  .bubble .who { display: block; font-size: 12px; color: #6e6e73; margin-bottom: 2px; }
+  .time { align-self: flex-start; font-size: 11px; color: var(--muted); margin: 2px 0 10px 12px; }
+  .empty { margin: auto; text-align: center; color: var(--muted); font-size: 14px; padding: 40px; }
+  .compose { display: flex; align-items: center; gap: 8px; padding: 8px 12px 26px; border-top: 1px solid var(--line); }
+  .compose .field { flex: 1; height: 36px; border-radius: 18px; border: 1px solid #d1d1d6; padding: 0 14px; display: flex; align-items: center; color: #c7c7cc; font-size: 16px; }
+  .compose .plus { width: 34px; height: 34px; border-radius: 50%; background: #e9e9eb; display: grid; place-items: center; color: #8e8e93; font-size: 22px; }
+  @keyframes pop { from { transform: scale(.8) translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="status"><span id="clock">9:41</span><span class="icons"><svg width="18" height="11" viewBox="0 0 18 11"><rect x="0" y="7" width="3" height="4" rx="1" fill="#000"/><rect x="5" y="5" width="3" height="6" rx="1" fill="#000"/><rect x="10" y="2.5" width="3" height="8.5" rx="1" fill="#000"/><rect x="15" y="0" width="3" height="11" rx="1" fill="#000"/></svg><svg width="26" height="12" viewBox="0 0 26 12"><rect x=".5" y=".5" width="22" height="11" rx="3" fill="none" stroke="#000" opacity=".4"/><rect x="2" y="2" width="17" height="8" rx="1.8" fill="#000"/><rect x="23.5" y="4" width="1.8" height="4" rx=".9" fill="#000" opacity=".4"/></svg></span></div>
+  <div class="head">
+    <span class="back"><svg width="11" height="18" viewBox="0 0 11 18"><path d="M9.5 1.5 2 9l7.5 7.5" fill="none" stroke="#007aff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <span class="av"><svg viewBox="0 0 24 24" width="24" height="24"><path d="M3 13.2 20.6 5.4c.9-.4 1.7.6 1.1 1.4l-7.4 10.4c-.5.7-1.6.6-1.9-.2l-1.5-3.6-3.9-1.3Z" fill="currentColor"/></svg></span>
+    <b>Lakeshore Air</b>
+    <small>Text message</small>
+  </div>
+  <div class="thread" id="thread"><p class="empty">No messages yet.</p></div>
+  <div class="compose"><span class="plus">+</span><span class="field">Text Message</span></div>
+</div>
+<script>
+const C = new URLSearchParams(location.search).get("c") || "stage";
+const $ = (id) => document.getElementById(id);
+const hhmm = (iso) => new Date(iso).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+let seen = "";
+function tick() { $("clock").textContent = new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }).replace(/\s?[AP]M$/, ""); }
+async function load() {
+  try {
+    const r = await fetch(`api/messages?c=${encodeURIComponent(C)}`, { cache: "no-store" });
+    if (!r.ok) return;
+    const d = await r.json();
+    const key = d.messages.map((m) => m.id).join(",");
+    if (key === seen) return;
+    seen = key;
+    const th = $("thread");
+    th.replaceChildren();
+    if (!d.messages.length) { const p = document.createElement("p"); p.className = "empty"; p.textContent = "No messages yet."; th.append(p); return; }
+    const day = document.createElement("p"); day.className = "day"; day.innerHTML = "<b>Today</b> " + hhmm(d.messages[0].at); th.append(day);
+    for (const m of d.messages) {
+      const b = document.createElement("div"); b.className = "bubble";
+      const w = document.createElement("span"); w.className = "who"; w.textContent = `From ${d.from}, via Lakeshore Air`;
+      b.append(w, m.text); th.append(b);
+      const t = document.createElement("span"); t.className = "time"; t.textContent = hhmm(m.at); th.append(t);
+    }
+    th.scrollTop = th.scrollHeight;
+    if (navigator.vibrate) navigator.vibrate(60);
+  } catch {}
+}
+tick(); setInterval(tick, 10000);
+load(); setInterval(load, 1500);
+</script>
+</body>
+</html>

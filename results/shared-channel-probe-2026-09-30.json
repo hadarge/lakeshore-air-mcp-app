@@ -1,0 +1,50 @@
+{
+  "what": "channel_probe: one secret per channel (content text, structuredContent, _meta); the model is asked to repeat every CANARY- string it can see. Fresh chat per run.",
+  "date": "2026-09-30",
+  "hosts": {
+    "claude-code-2.1.283 (Sonnet 5)": {
+      "runs": 3,
+      "content": "0/3",
+      "structuredContent": "3/3",
+      "_meta": "0/3",
+      "evidence": [
+        "CANARY-S-AU8CSI",
+        "CANARY-S-B5OPIE",
+        "CANARY-S-6EZ07X"
+      ]
+    },
+    "chatgpt-web (default model, developer-mode app)": {
+      "runs": 3,
+      "content": "3/3",
+      "structuredContent": "2/3",
+      "_meta": "0/3",
+      "evidence": [
+        [
+          "CANARY-C-YHRVD8",
+          "CANARY-S-F2M210"
+        ],
+        [
+          "CANARY-S-VNWIMV",
+          "CANARY-C-Y0M9KJ"
+        ],
+        [
+          "CANARY-C-PV8EN9"
+        ]
+      ]
+    },
+    "claude-web": {
+      "runs": 3,
+      "model": "Opus 5.5 (account default)",
+      "content": "3/3",
+      "structuredContent": "0/3",
+      "_meta": "0/3",
+      "evidence": [
+        "CANARY-C-TUJT8V",
+        "CANARY-C-MMQHM7",
+        "CANARY-C-S0EZJC"
+      ],
+      "note": "earlier 'blocked' was a misdiagnosis: a new custom connector has no tools until Connect is pressed on its page"
+    }
+  },
+  "issued": "the server's issued canaries per run matched the repeated strings exactly; no repeated string was invented"
+}

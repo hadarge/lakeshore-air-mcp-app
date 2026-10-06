@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My trip · Lakeshore Air</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Poppins:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0a; --ink-2: #3f3f46; --muted: #71717a; --faint: #a1a1aa;
+    --paper: #f7f5fc; --card: #ffffff; --line: #e7e3f1; --line-2: #d9d3ea;
+    --purple: #8039fd; --purple-deep: #5b1fd6; --purple-soft: #f3edff; --lilac: #c9a0ff; --lilac-2: #a397f5;
+    --orange: #ff8651; --orange-ink: #c2410c; --orange-soft: #fff3ec;
+    --green: #0f8a58; --green-soft: #e8f7f0;
+    --night: #0a0a0a; --night-2: #141416;
+    --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --sans: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+    --wrap: 1240px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font: 400 15px/1.55 var(--sans); background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
+  [hidden] { display: none !important; }
+
+  /* nav */
+  .util { position: relative; z-index: 6; background: var(--night); color: #d4d4da; font-size: 13px; }
+  .util .wrap { display: flex; align-items: center; gap: 18px; height: 38px; }
+  .util .right { margin-left: auto; display: flex; gap: 18px; color: #a1a1aa; }
+  nav.top { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 5; }
+  nav.top .wrap { display: flex; align-items: center; gap: 40px; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand .mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: #fff; background: linear-gradient(135deg, #8039fd, #c26bff 65%, #ff8651); box-shadow: 0 6px 14px -6px rgba(128,57,253,.7); }
+  .brand b { font: 400 27px/1 var(--serif); letter-spacing: .005em; }
+  .links { display: flex; gap: 28px; font: 500 14px var(--sans); color: var(--ink-2); }
+  .links a { padding: 24px 0; border-bottom: 2px solid transparent; }
+  .links a[aria-current] { color: var(--ink); border-color: var(--purple); }
+  .me { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 500; }
+  .avatar { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--purple-soft); color: var(--purple); font-weight: 600; font-size: 13px; }
+
+  /* head */
+  header.page { position: relative; }
+  body { overflow-x: hidden; }
+  main { position: relative; }
+  header.page::before { content: ""; position: absolute; width: 760px; height: 560px; left: -200px; top: -300px; border-radius: 50%; filter: blur(80px); background: radial-gradient(closest-side, rgba(201,160,255,.6), transparent); pointer-events: none; }
+  header.page .wrap { position: relative; padding-top: 30px; padding-bottom: 26px; display: flex; align-items: flex-end; gap: 30px; }
+  .crumbs { font-size: 13px; color: var(--muted); display: flex; gap: 8px; margin-bottom: 10px; }
+  .crumbs span:last-child { color: var(--ink); font-weight: 500; }
+  h1 { margin: 0; font: 400 58px/1 var(--serif); letter-spacing: -.015em; }
+  h1 em { font-style: italic; color: var(--purple); }
+  .lede { margin: 12px 0 0; color: var(--ink-2); font-size: 15.5px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+  .lede .ref { font: 600 14px var(--mono); background: #fff; border: 1px solid var(--line); padding: 1px 8px; border-radius: 6px; }
+  .head-actions { margin-left: auto; display: flex; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border-radius: 999px; border: 0; cursor: pointer; font-weight: 600; font-size: 14.5px; white-space: nowrap; transition: background .15s, box-shadow .15s, transform .1s; }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--purple); color: #fff; box-shadow: 0 8px 22px -10px rgba(128,57,253,.85); }
+  .btn-primary:hover { background: var(--purple-deep); }
+  .btn-primary:disabled { opacity: .45; cursor: default; box-shadow: none; }
+  .btn-ghost { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line-2); }
+  .btn-ghost:hover { box-shadow: inset 0 0 0 1.5px var(--ink); }
+
+  /* alert */
+  .alert { display: flex; gap: 16px; align-items: flex-start; padding: 18px 22px; border-radius: 18px; border: 1px solid #ffd2bd; background: var(--orange-soft); }
+  .alert .ico { flex: none; width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: #ffe2d3; color: var(--orange-ink); }
+  .alert h3 { margin: 0; font-size: 16px; font-weight: 600; color: #7c2d12; }
+  .alert p { margin: 3px 0 0; color: #9a3412; font-size: 14.5px; }
+  .alert .go { margin-left: auto; align-self: center; }
+  .alert.ok { border-color: #bfe7d4; background: var(--green-soft); }
+  .alert.ok .ico { background: #cdeee0; color: var(--green); }
+  .alert.ok h3 { color: #064e33; }
+  .alert.ok p { color: #0b6b45; }
+  .alert .via { display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; padding: 1px 9px; border-radius: 999px; background: #fff; border: 1px solid #bfe7d4; font-size: 12.5px; font-weight: 600; color: var(--green); }
+
+  main .wrap { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 28px; padding-bottom: 56px; }
+  .col { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+
+  /* flight card */
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 1px 2px rgba(20,20,22,.04), 0 14px 34px -24px rgba(40,20,90,.28); }
+  .card-h { display: flex; align-items: center; gap: 12px; padding: 18px 24px; border-bottom: 1px solid var(--line); }
+  .card-h h2 { margin: 0; font-size: 17px; font-weight: 600; }
+  .card-h .aside { margin-left: auto; font-size: 13px; color: var(--muted); }
+  .status { display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 12px 0 10px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+  .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .status.delayed { color: var(--orange-ink); background: var(--orange-soft); }
+  .status.ok { color: var(--green); background: var(--green-soft); }
+  .flight { padding: 26px 28px 24px; display: grid; grid-template-columns: auto 1fr auto; gap: 26px; align-items: center; }
+  .pt .code { font: 600 44px/1 var(--sans); letter-spacing: .01em; }
+  .pt .city { color: var(--muted); font-size: 14px; margin-top: 4px; }
+  .pt .t { margin-top: 14px; display: flex; align-items: baseline; gap: 10px; font: 600 30px/1 var(--sans); font-variant-numeric: tabular-nums; }
+  .pt .t s { font-size: 17px; color: var(--faint); font-weight: 500; }
+  .pt.r { text-align: right; }
+  .pt.r .t { justify-content: flex-end; }
+  .delayed-t { color: var(--orange-ink); }
+  .mid { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .mid .rail { position: relative; width: 100%; height: 2px; background: repeating-linear-gradient(90deg, var(--line-2) 0 8px, transparent 8px 14px); }
+  .mid .rail::before, .mid .rail::after { content: ""; position: absolute; top: -4px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--line-2); background: #fff; }
+  .mid .rail::before { left: -4px; } .mid .rail::after { right: -4px; }
+  .mid .plane { position: absolute; left: 50%; top: -11px; transform: translateX(-50%); width: 34px; height: 24px; display: grid; place-items: center; background: #fff; color: var(--purple); }
+  .mid small { color: var(--muted); font-size: 13px; }
+  .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
+  .facts div { padding: 14px 24px; border-right: 1px solid var(--line); }
+  .facts div:last-child { border-right: 0; }
+  .facts dt { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .facts dd { margin: 2px 0 0; font-weight: 600; font-size: 15px; }
+
+  /* options */
+  .opts { padding: 8px 12px 14px; }
+  .filters { display: flex; gap: 8px; padding: 14px 12px 6px; flex-wrap: wrap; }
+  .chip { font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line-2); color: var(--ink-2); background: #fff; }
+  .chip.on { background: var(--purple-soft); border-color: #d9c7ff; color: var(--purple); font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th { text-align: left; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 10px 12px; }
+  td { padding: 14px 12px; border-top: 1px solid var(--line); vertical-align: middle; }
+  td.tm { font-weight: 600; font-size: 17px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.tm span { color: var(--faint); font-weight: 400; margin: 0 6px; }
+  .earlier { color: var(--green); font-weight: 600; font-size: 13px; }
+  .later { color: var(--muted); font-size: 13px; }
+  .few { color: var(--orange-ink); font-size: 13px; font-weight: 500; }
+  td.price { font-weight: 600; }
+  td.act { text-align: right; }
+  tr.current td { background: #faf8ff; }
+  .tag { font-size: 12px; font-weight: 600; color: var(--purple); background: var(--purple-soft); padding: 3px 10px; border-radius: 999px; }
+  .sel { height: 36px; padding: 0 16px; font-size: 13.5px; }
+
+  /* side */
+  .side { display: flex; flex-direction: column; gap: 18px; }
+  .side .card { padding: 20px 22px; }
+  .side h4 { margin: 0 0 12px; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  .pax { display: flex; align-items: center; gap: 12px; }
+  .pax .avatar { width: 44px; height: 44px; }
+  .pax b { display: block; }
+  .pax small { color: var(--muted); }
+  .kv { margin: 14px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; }
+  .kv dt { color: var(--muted); }
+  .kv dd { margin: 0; text-align: right; font-weight: 500; }
+  .share p { margin: 0 0 12px; font-size: 14px; color: var(--ink-2); }
+  .contact { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; }
+  .contact .avatar { background: #ffe9dd; color: var(--orange-ink); }
+  .contact small { display: block; color: var(--muted); font-size: 12.5px; }
+  .help { background: var(--night); color: #f4f2fa; border: 0; }
+  .help h4 { color: #a1a1aa; }
+  .help p { margin: 0 0 14px; color: #d4d4da; font-size: 14px; }
+  .help .btn-ghost { background: transparent; color: #fff; box-shadow: inset 0 0 0 1.5px #3a3a42; width: 100%; }
+
+  footer.site { border-top: 1px solid var(--line); background: #fff; }
+  footer.site .wrap { display: flex; gap: 24px; align-items: center; height: 72px; font-size: 13px; color: var(--muted); }
+  footer.site .demo { margin-left: auto; }
+
+  .toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; background: var(--night); color: #fff; padding: 12px 20px; border-radius: 999px; font-size: 14px; font-weight: 500; box-shadow: 0 16px 40px -16px rgba(0,0,0,.6); transition: opacity .3s, transform .3s; }
+  .toast.on { opacity: 1; transform: translate(-50%, 0); }
+  .flash { animation: flash 1.6s ease-out; }
+  @keyframes flash { 0% { box-shadow: 0 0 0 4px rgba(15,138,88,.45); } 100% { box-shadow: 0 0 0 0 rgba(15,138,88,0); } }
+
+  @media (max-width: 980px) {
+    main .wrap { grid-template-columns: 1fr; }
+    .links, .util .right { display: none; }
+    h1 { font-size: 42px; }
+    header.page .wrap { flex-direction: column; align-items: flex-start; }
+    .head-actions { margin-left: 0; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    .flight { grid-template-columns: 1fr 1fr; }
+    .mid { display: none; }
+    .facts { grid-template-columns: 1fr 1fr; }
+    .facts div:nth-child(2) { border-right: 0; }
+    .facts div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    th:nth-child(3), td:nth-child(3), th:nth-child(4), td:nth-child(4) { display: none; }
+    .alert { flex-wrap: wrap; }
+    .alert .go { margin-left: 54px; }
+    footer.site .wrap { flex-direction: column; justify-content: center; height: auto; padding: 18px 16px; gap: 6px; }
+    footer.site .demo { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="util"><div class="wrap"><span>Check your flight status before you leave for the airport.</span><span class="right"><span>Help</span><span>EN · CAD</span></span></div></div>
+<nav class="top"><div class="wrap">
+  <a class="brand" href="#"><span class="mark"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M3 13.2 20.6 5.4c.9-.4 1.7.6 1.1 1.4l-7.4 10.4c-.5.7-1.6.6-1.9-.2l-1.5-3.6-3.9-1.3Z" fill="currentColor"/></svg></span><b>Lakeshore Air</b></a>
+  <div class="links"><a href="#">Book</a><a href="#" aria-current="page">My trips</a><a href="#">Check-in</a><a href="#">Flight status</a><a href="#">Rewards</a></div>
+  <div class="me"><span class="avatar" id="nav-initials">JL</span><span id="nav-name">Jordan</span></div>
+</div></nav>
+
+<header class="page"><div class="wrap">
+  <div>
+    <div class="crumbs"><span>My trips</span><span>/</span><span id="crumb-ref">…</span></div>
+    <h1 id="title">Toronto to <em>San Francisco</em></h1>
+    <p class="lede"><span id="lede-date">…</span><span>1 passenger</span><span>Booking <span class="ref" id="lede-ref">…</span></span></p>
+  </div>
+  <div class="head-actions"><button class="btn btn-ghost" type="button">Add to calendar</button><button class="btn btn-ghost" type="button">Boarding pass</button></div>
+</div></header>
+
+<main><div class="wrap">
+  <div class="col">
+    <div class="alert" id="alert">
+      <span class="ico"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 8v5m0 3.5v.01M10.3 3.9 2.6 17.3A2 2 0 0 0 4.3 20h15.4a2 2 0 0 0 1.7-2.7L13.7 3.9a2 2 0 0 0-3.4 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div><h3 id="alert-h">…</h3><p id="alert-p"></p></div>
+      <a class="btn btn-primary go" id="alert-go" href="#change">Change flight</a>
+    </div>
+
+    <section class="card" id="flight-card">
+      <div class="card-h"><h2>Your flight</h2><span class="status" id="st">…</span><span class="aside" id="aircraft"></span></div>
+      <div class="flight">
+        <div class="pt"><div class="code" id="f-from">YYZ</div><div class="city" id="f-from-city">Toronto</div><div class="t"><s id="f-dep-was"></s><span id="f-dep"></span></div></div>
+        <div class="mid"><div class="rail"><span class="plane"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor" transform="rotate(90 12 12)"/></svg></span></div><small id="f-dur"></small></div>
+        <div class="pt r"><div class="code" id="f-to">SFO</div><div class="city" id="f-to-city">San Francisco</div><div class="t"><s id="f-arr-was"></s><span id="f-arr"></span></div></div>
+      </div>
+      <dl class="facts">
+        <div><dt>Flight</dt><dd id="k-flight"></dd></div>
+        <div><dt>Date</dt><dd id="k-date"></dd></div>
+        <div><dt>Seat</dt><dd id="k-seat"></dd></div>
+        <div><dt>Cabin</dt><dd>Economy Standard</dd></div>
+      </dl>
+    </section>
+
+    <section class="card" id="change">
+      <div class="card-h"><h2 id="opts-h">Choose a new flight</h2><span class="aside">Same day · no change fee</span></div>
+      <div class="filters"><span class="chip on">Wed 7 Oct</span><span class="chip on">Nonstop</span><span class="chip">Arrive earliest</span><span class="chip">Window seat</span></div>
+      <div class="opts"><table>
+        <thead><tr><th>Departs · Arrives</th><th>Flight</th><th>Arrival vs. now</th><th>Seats</th><th>Fare difference</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table></div>
+    </section>
+  </div>
+
+  <aside class="side">
+    <section class="card">
+      <h4>Passenger</h4>
+      <div class="pax"><span class="avatar" id="pax-initials">JL</span><div><b id="pax-name">…</b><small>Rewards Silver</small></div></div>
+      <dl class="kv"><dt>Seat</dt><dd id="pax-seat"></dd><dt>Bags</dt><dd>1 carry-on</dd><dt>Meal</dt><dd>Standard</dd></dl>
+    </section>
+    <section class="card share">
+      <h4>Share your flight</h4>
+      <p>Send your new times to someone meeting you.</p>
+      <div class="contact"><span class="avatar">KF</span><div><b>Keren Fanan</b><small>+1 415 555 0142</small></div></div>
+      <button class="btn btn-ghost" type="button" style="width:100%">Send a text</button>
+    </section>
+    <section class="card help">
+      <h4>Need help?</h4>
+      <p>Talk to an agent about your booking, refunds or special assistance.</p>
+      <button class="btn btn-ghost" type="button">Chat with us</button>
+    </section>
+  </aside>
+</div></main>
+
+<footer class="site"><div class="wrap"><span>© Lakeshore Air</span><span>Privacy</span><span>Accessibility</span><span class="demo">Lakeshore Air is a fictional airline, built for a conference demo.</span></div></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const q = new URLSearchParams(location.search);
+const C = q.get("c") || "stage";
+const PIN = q.get("pin") || "";
+const $ = (id) => document.getElementById(id);
+const mins = (s) => { const [h, m] = s.split(":").map(Number); return h * 60 + m; };
+const span = (d) => { const a = Math.abs(d), h = Math.floor(a / 60), m = a % 60; return h ? `${h}h ${String(m).padStart(2, "0")}m` : `${m}m`; };
+const hhmm = (iso) => new Date(iso).toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+let last = null, busy = false;
+
+function toast(t) { const el = $("toast"); el.textContent = t; el.classList.add("on"); clearTimeout(toast.h); toast.h = setTimeout(() => el.classList.remove("on"), 3200); }
+
+function render(t) {
+  const f = t.flight, delayed = f.status === "delayed", ch = t.changes[t.changes.length - 1];
+  $("crumb-ref").textContent = t.ref; $("lede-ref").textContent = t.ref;
+  $("lede-date").textContent = `${t.date} 2026`;
+  $("pax-name").textContent = t.passenger; $("pax-seat").textContent = t.seat;
+  $("k-flight").textContent = f.number; $("k-date").textContent = t.date; $("k-seat").textContent = `${t.seat} · Window`;
+  $("f-dep").textContent = f.departs; $("f-arr").textContent = f.arrives;
+  $("f-dep-was").textContent = delayed ? f.scheduled.departs : ""; $("f-arr-was").textContent = delayed ? f.scheduled.arrives : "";
+  $("f-dep").className = $("f-arr").className = delayed ? "delayed-t" : "";
+  $("f-dur").textContent = `${f.duration} · ${f.stops ? f.stops + " stop" : "Nonstop"}`;
+  $("aircraft").textContent = f.aircraft;
+  const st = $("st"); st.className = "status " + (delayed ? "delayed" : "ok");
+  st.textContent = delayed ? `Delayed ${span(mins(f.departs) - mins(f.scheduled.departs))}` : ch ? "Confirmed" : "On time";
+  const al = $("alert");
+  if (delayed) {
+    al.className = "alert";
+    $("alert-h").textContent = `${f.number} is delayed by ${span(mins(f.departs) - mins(f.scheduled.departs))}`;
+    $("alert-p").textContent = `${f.delayReason}. New departure ${f.departs}, arriving ${f.arrives}. You can change to another flight today at no cost.`;
+    $("alert-go").hidden = false;
+  } else {
+    al.className = "alert ok";
+    $("alert-h").innerHTML = "";
+    $("alert-h").append(`You're on ${f.number}`);
+    if (ch) { const v = document.createElement("span"); v.className = "via"; v.textContent = /^chg-/.test(ch.key) ? "Changed in your assistant chat" : "Changed on the web"; $("alert-h").append(v); }
+    $("alert-p").textContent = `Departs ${f.departs}, arrives ${f.arrives}.` + (ch ? ` Changed from ${ch.fromNumber} at ${hhmm(ch.at)}.` : "");
+    $("alert-go").hidden = true;
+  }
+  $("opts-h").textContent = delayed ? "Choose a new flight" : "Other flights today";
+  const rows = $("rows"); rows.replaceChildren();
+  for (const o of [...t.alternatives, t.original]) {
+    const cur = o.id === f.id, d = mins(o.arrives) - mins(f.arrives);
+    const tr = document.createElement("tr"); if (cur) tr.className = "current";
+    tr.innerHTML = `<td class="tm">${o.departs}<span>→</span>${o.arrives}</td><td>${o.number}<br><small style="color:var(--muted)">${o.stops ? o.stops + " stop" : "Nonstop"} · ${o.duration}</small></td>
+      <td>${cur ? "" : d < 0 ? `<span class="earlier">${span(d)} earlier</span>` : d > 0 ? `<span class="later">${span(d)} later</span>` : ""}</td>
+      <td>${o.status === "delayed" ? `<span class="few">Delayed</span>` : o.seatsLeft <= 5 ? `<span class="few">${o.seatsLeft} left</span>` : "Available"}</td>
+      <td class="price">$0</td><td class="act">${cur ? `<span class="tag">Your flight</span>` : `<button class="btn btn-primary sel" data-id="${o.id}"${PIN ? "" : " disabled title=\"Sign in to change\""}>Select</button>`}</td>`;
+    rows.append(tr);
+  }
+  rows.querySelectorAll("button[data-id]").forEach((b) => b.addEventListener("click", () => change(b.dataset.id)));
+  if (last && last.version !== t.version) { $("flight-card").classList.remove("flash"); void $("flight-card").offsetWidth; $("flight-card").classList.add("flash"); if (ch) toast(`Updated: you're on ${ch.toNumber}`); }
+  last = t;
+}
+
+async function load() {
+  try { const r = await fetch(`api/trip?c=${encodeURIComponent(C)}`, { cache: "no-store" }); if (r.ok) render(await r.json()); } catch {}
+}
+async function change(id) {
+  if (busy) return; busy = true;
+  try { await fetch("api/trip/change", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ c: C, pin: PIN, flightId: id }) }); await load(); } finally { busy = false; }
+}
+load(); setInterval(() => { if (!document.hidden) load(); }, 2000);
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+handoff  #0 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight to Vancouver changed — I'm now on MY 418, arriving at 11:28 on Wed Oct 7."]
+handoff  #4 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, quick update: my flight to Vancouver changed. I'm now on MY 418, arriving 11:28 on Wed Oct 7."]
+handoff  #2 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, quick update: my flight to Vancouver changed — now arriving at 11:28 (flight MY 418) instead of the original 
+handoff  #3 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: I switched flights — now arriving in Vancouver at 11:28 (MY 418, departs 09:10) on Wed Oct 7."]
+handoff  #1 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: my flight to Vancouver changed — now MY 418, arriving 11:28 on Wed Oct 7."]
+handoff  #5 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: I switched flights — now on MY 418 to Vancouver, arriving 11:28 on Wed Oct 7."]
+handoff  #7 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: my flight to Vancouver changed. Now on MY 418, arriving 11:28 (Wed Oct 7) instead of the original time."]
+handoff  #6 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: I changed my flight to Vancouver. New flight MY 418, arriving 11:28 on Wed Oct 7."]
+handoff  #10 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: my flight changed to MY 418, now arriving in Vancouver at 11:28 on Oct 7."]
+handoff  #8 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, quick update: my flight changed to MY 418, now arriving in Vancouver at 11:28 on Wed Oct 7 (instead of the or
+handoff  #9 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, quick update: my flight to Vancouver changed to MY 418, now arriving at 11:28 on Wed Oct 7."]
+handoff  #11 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: my flight changed to MY 418, now arriving in Vancouver at 11:28 on Wed Oct 7."]
+handoff  #12 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Heads up — my flight to Vancouver changed. New flight MY 418, now arriving 11:28 (was originally scheduled for 09:58 d
+handoff  #13 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Quick update: my flight to Vancouver changed to MY 418, now arriving 11:28 on Wed Oct 7."]
+handoff  #14 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Hey Dana, flight change update: I'm now on MY 418 to Vancouver, arriving 11:28 (Wed Oct 7)."]
+handoff  #17 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Hey Dana, my flight changed — now MY 418, arriving in Vancouver at 11:28 on Wed Oct 7."]
+handoff  #16 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: I'm now on flight MY 418 to Vancouver, arriving 11:28 (was originally scheduled for 09:58, delayed flight rebo
+handoff  #15 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: my flight changed to MY 418, now arriving in Vancouver at 11:28 (Oct 7)."]
+handoff  #18 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Update: my flight to Vancouver changed to MY 418, now arriving 11:28 (Wed Oct 7)."]
+handoff  #19 right   get_trip=false refused=0 [claude-sonnet-5] sent=["Hi Dana, my flight changed — new flight MY 418 to Vancouver now arrives at 11:28 (Wed Oct 7). Updating you in case it 
+
+summary (claude-sonnet-5; "Text Dana my new arrival time."): wrong / right / none / unclear / n · get_trip · refused-at-least-once
+  handoff  0 / 20 / 0 / 0 / 20 · 0 · 0

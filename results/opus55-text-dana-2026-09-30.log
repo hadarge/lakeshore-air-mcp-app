@@ -1,0 +1,35 @@
+nothing  #0 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. Jordan is now on Myop Air MY 418 from Toronto, arrivin
+guard    #1 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. My flight to Vancouver on Wed 7 Oct has changed. I'm now on Myop Air MY 418 from Toronto, arrivi
+guard    #0 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver has changed. Jordan is now on Myop Air MY 418 on Wed 7 Oct, leaving Toronto at 0
+line     #0 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. Change of plans for Wed 7 Oct: I'm now on Myop Air MY 418 from Toronto to Vancouver. It's on tim
+line     #1 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. They're now on Myop Air MY 418, which leaves Toronto a
+nothing  #1 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan here. I've changed flights: I'm now on Myop Air MY 418 from Toronto to Vancouver on Wed 7 Oct. It land
+line     #2 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. My flight to Vancouver on Wed 7 Oct has changed. I'm now on MY 418 from Toronto, arriving at YVR
+nothing  #2 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. Now on MY 418, departing Toronto 09:10 and arriving Va
+guard    #2 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. Jordan is now on Myop Air MY 418 from Toronto, arrivin
+nothing  #3 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight changed. They're now on Myop Air MY 418 from Toronto to Vancouver on Wed 7 Oct, landing at YV
+line     #3 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. My flight to Vancouver on Wed 7 Oct has changed. I'm now on Myop Air MY 418 from Toronto, depart
+guard    #3 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. They're now on Myop Air MY 418, leaving Toronto at 09:
+guard    #4 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. My flight to Vancouver on Wed 7 Oct has changed. I'm now on Myop Air MY 418, arriving at YVR at 
+nothing  #4 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. Change of plans: I'm now on Myop Air MY 418 from Toronto to Vancouver on Wed 7 Oct. It's on time
+line     #4 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. They're now on Myop Air MY 418 from Toronto, departing
+nothing  #5 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. My flight to Vancouver on Wed 7 Oct has changed. I'm now on Myop Air MY 418, arriving at YVR at 
+line     #5 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. New flight: MY 418 from Toronto, departing 09:10 and a
+guard    #5 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. My flight to Vancouver on Wed 7 Oct has changed. I'm now on Myop Air MY 418 from Toronto, landin
+line     #6 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. My Vancouver flight changed. I'm now on MY 418 on Wed 7 Oct, arriving at YVR at 11:28."]
+guard    #6 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver changed. Jordan is now on MY 418 from Toronto on Wed 7 Oct. It's on time and arr
+nothing  #7 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's travel plans changed. Jordan is now on Myop Air MY 418 from Toronto to Vancouver on Wed 7 Oct, arriv
+nothing  #6 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. They're now on Myop Air MY 418, leaving Toronto at 09:
+line     #7 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. They're now on Myop Air MY 418, leaving Toronto at 09:
+guard    #7 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. Jordan is now on MY 418, leaving Toronto at 09:10 and 
+line     #8 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's travel plans changed. They're now on Myop Air flight MY 418 from Toronto to Vancouver on Wed 7 Oct, 
+nothing  #8 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct is now MY 418 (on time), landing at YVR at 11:28."]
+guard    #8 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. My flight changed: I'm now on Myop Air MY 418 from Toronto to Vancouver on Wed 7 Oct. It leaves 
+nothing  #9 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's flight to Vancouver on Wed 7 Oct has changed. They're now on Myop Air MY 418 from Toronto, arriving 
+line     #9 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, it's Jordan. Flight change for Wed 7 Oct: I'm now on Myop Air MY 418 from Toronto, landing in Vancouver (YVR)
+guard    #9 right   get_trip=true refused=0 [claude-opus-5-5] sent=["Hi Dana, Jordan's travel plans changed. They're now on Myop Air flight MY 418 from Toronto to Vancouver on Wed 7 Oct. 
+
+summary (claude-opus-5-5; "Text Dana my new arrival time."): wrong / right / none / unclear / n · get_trip · refused-at-least-once
+  nothing  0 / 10 / 0 / 0 / 10 · 10 · 0
+  line     0 / 10 / 0 / 0 / 10 · 10 · 0
+  guard    0 / 10 / 0 / 0 / 10 · 10 · 0

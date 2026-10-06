@@ -1,0 +1,40 @@
+{
+  "name": "lakeshore-air-trip-mcp-app",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "A customer-facing MCP App: change a delayed flight inside the chat. The demo for option B of The App Inside the Chat (MCP Dev Summit Toronto 2026).",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "cross-env INPUT=view/mcp-app.html vite build",
+    "start": "npm run build && tsx src/main.ts",
+    "serve": "tsx src/main.ts",
+    "reset": "tsx src/reset.ts",
+    "tunnel": "cloudflared tunnel --url http://localhost:3071",
+    "test": "tsx test/e2e.ts",
+    "rehearse": "tsx test/rehearsal.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "2.0.0",
+    "@modelcontextprotocol/express": "2.0.0",
+    "@modelcontextprotocol/ext-apps": "^2.0.3",
+    "@modelcontextprotocol/node": "2.0.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "zod": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.0",
+    "@types/node": "22.10.0",
+    "cross-env": "^10.1.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3",
+    "vite": "^6.0.0",
+    "vite-plugin-singlefile": "^2.3.0"
+  }
+}

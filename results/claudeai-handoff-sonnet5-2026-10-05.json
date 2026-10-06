@@ -1,0 +1,56 @@
+{
+ "what": "claude.ai web, Sonnet 5 (Medium), fresh chat each; console: handoff ON, guard OFF, line OFF. After Change the view calls ui/update-model-context with 'The customer changed the flight in the trip view. Trip v2-…: LK 418, departs 09:10, arrives 11:28.' Then: 'Text Keren my new arrival time.'",
+ "date": "2026-10-05",
+ "host_reply_to_update_model_context": "{} (accepted, no error), checked in a 4th chat by recording the view's JSON-RPC traffic",
+ "summary": "2 of 3 texts had 14:13; the 1 right text came after the model called get_trip on its own",
+ "runs": [
+  {
+   "chat": "https://claude.ai/chat/11a4081e-950d-4431-beb9-6377d0f3b6c5",
+   "phone": [
+    "Hey Keren, my flight got delayed — new arrival time in SF is 14:13 (2:13pm) on LK 412, instead of 09:58. Sorry for the change!"
+   ],
+   "tool_calls_tail": [
+    "load_trip",
+    "change_flight",
+    "load_trip",
+    "load_trip",
+    "load_trip",
+    "notify_contact",
+    "load_trip",
+    "load_trip"
+   ]
+  },
+  {
+   "chat": "https://claude.ai/chat/189e3d13-91c9-4100-ac14-60a37b8742fc",
+   "phone": [
+    "Hey Keren, heads up — my flight LK 412 to SFO got delayed. New arrival time is 14:13 (was 09:58). I'll update you if anything changes!"
+   ],
+   "tool_calls_tail": [
+    "load_trip",
+    "change_flight",
+    "load_trip",
+    "load_trip",
+    "load_trip",
+    "load_trip",
+    "notify_contact",
+    "load_trip"
+   ]
+  },
+  {
+   "chat": "https://claude.ai/chat/06ab093e-236a-4bd0-bab1-0ded7d8b4185",
+   "phone": [
+    "Update: I switched flights — now on LK 418, arriving SFO at 11:28 Wed Oct 7 (on time)."
+   ],
+   "tool_calls_tail": [
+    "load_trip",
+    "load_trip",
+    "load_trip",
+    "load_trip",
+    "get_trip",
+    "load_trip",
+    "notify_contact",
+    "load_trip"
+   ]
+  }
+ ]
+}

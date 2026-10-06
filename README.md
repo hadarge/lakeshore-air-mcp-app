@@ -1,6 +1,6 @@
 # Lakeshore Air: an MCP App with two faces
 
-The demo from **"The App Inside the Chat"** (MCP Dev Summit Toronto, 6 Oct 2026, Keren Fanan and Hadar Geva, [Myop](https://myop.dev)).
+The demo from **"The App Inside the Chat"** (MCP Dev Summit Toronto, 6 Oct 2026, Keren Fanan and Hadar Geva, [Myop](https://myop.dev)). The slides: [slides/](slides/).
 
 A made-up airline's "Manage my trip", inside the chat. A customer's flight is delayed. They pick a new flight in the app and press Change, then ask the chat: "Text Keren my new arrival time." It's built on plain [`@modelcontextprotocol/ext-apps`](https://github.com/modelcontextprotocol/ext-apps) 2.x (MCP Apps, SEP-1865), with no vendor in the path.
 

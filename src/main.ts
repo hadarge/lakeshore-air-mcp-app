@@ -113,7 +113,8 @@ api.post("/mode", (req, res) => {
   if (typeof req.body?.line === "boolean") t.mode.line = req.body.line;
   if (typeof req.body?.guard === "boolean") t.mode.guard = req.body.guard;
   if (typeof req.body?.handoff === "boolean") t.mode.handoff = req.body.handoff;
-  audit(t, `mode line=${t.mode.line} guard=${t.mode.guard} handoff=${Boolean(t.mode.handoff)}`);
+  if (typeof req.body?.message === "boolean") t.mode.message = req.body.message;
+  audit(t, `mode line=${t.mode.line} guard=${t.mode.guard} handoff=${Boolean(t.mode.handoff)} message=${Boolean(t.mode.message)}`);
   save(t);
   res.json(t.mode);
 });

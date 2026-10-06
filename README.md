@@ -39,6 +39,10 @@ Now: LK 418 ... arrives 11:28. Rewrite the message from the current trip, then s
 - **Freshness line:** a hint added to every result the model gets.
 - **Version check on writes:** the fix.
 
+**Two view switches, for trying the spec's own bridges on a real host (both off by default):**
+- **View hand-off:** after Change, the view calls `ui/update-model-context` (`app.updateModelContext`).
+- **View message:** after Change, the view calls `ui/message` (`app.sendMessage`) with "I changed my flight to LK 418, arriving 11:28." On claude.ai (6 Oct 2026) it landed in the composer unsent, under a caution banner, and waited for the user to press Enter.
+
 ## Run it
 
 ```bash
@@ -53,7 +57,7 @@ npm test                   # protocol e2e against the running server
 | `http://localhost:3071/usermcp/mcp` | MCP endpoint (stateless Streamable HTTP, no auth) |
 | `http://localhost:3071/usermcp/trip?pin=2468` | airline web page (the PIN enables its Select buttons) |
 | `http://localhost:3071/usermcp/phone` | the contact's phone |
-| `http://localhost:3071/usermcp/console` | presenter console: Reset, freshness line, version check |
+| `http://localhost:3071/usermcp/console` | presenter console: Reset, freshness line, version check, view hand-off, view message |
 
 **Environment variables:**
 

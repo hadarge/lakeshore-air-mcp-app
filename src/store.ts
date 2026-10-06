@@ -38,6 +38,8 @@ export type Mode = {
   guard: boolean;
   // The spec's bridge, for measurement on a real host: after a change the view calls ui/update-model-context.
   handoff?: boolean;
+  // Option 2 on a real host: after a change the view calls ui/message (the host decides whether it waits for Enter).
+  message?: boolean;
 };
 
 export type Trip = {

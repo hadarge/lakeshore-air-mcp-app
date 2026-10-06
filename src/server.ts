@@ -183,6 +183,7 @@ export function createServer(): McpServer {
         alternatives: ALTERNATIVES.map((id) => FLIGHTS[id]),
         changes: t.changes.map((c) => ({ ...c, fromNumber: FLIGHTS[c.from].number, toNumber: FLIGHTS[c.to].number })),
         handoff: Boolean(t.mode.handoff),
+        message: Boolean(t.mode.message),
       };
       return { content: [{ type: "text", text: JSON.stringify(data) }], structuredContent: data };
     },

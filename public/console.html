@@ -44,6 +44,7 @@
   <div class="card">
     <label class="sw"><input type="checkbox" id="line"><span class="track"></span><span><b>Freshness line</b><small>One line in every result the model reads: trip version, as-of, "call get_trip before acting on it".</small></span></label>
     <label class="sw"><input type="checkbox" id="handoff"><span class="track"></span><span><b>View hand-off (measurement)</b><small>After a change, the view calls ui/update-model-context with the new trip.</small></span></label>
+    <label class="sw"><input type="checkbox" id="message"><span class="track"></span><span><b>View message (option 2)</b><small>After a change, the view calls ui/message: "I changed my flight to LK 418, arriving 11:28."</small></span></label>
     <label class="sw"><input type="checkbox" id="guard"><span class="track"></span><span><b>Version check on writes</b><small>notify_contact is refused unless its tripVersion is the current one.</small></span></label>
   </div>
   <div class="card row">
@@ -67,7 +68,7 @@ async function load() {
   const c = encodeURIComponent($("cust").value || "stage");
   $("l-trip").href = `trip?c=${c}&pin=${encodeURIComponent($("pin").value)}`; $("l-phone").href = `phone?c=${c}`;
   const t = await call("state");
-  $("line").checked = t.mode.line; $("guard").checked = t.mode.guard; $("handoff").checked = !!t.mode.handoff;
+  $("line").checked = t.mode.line; $("guard").checked = t.mode.guard; $("handoff").checked = !!t.mode.handoff; $("message").checked = !!t.mode.message;
   const kv = $("kv"); kv.replaceChildren();
   const add = (k, v) => { const dt = document.createElement("dt"); dt.textContent = k; const dd = document.createElement("dd"); dd.textContent = v; kv.append(dt, dd); };
   add("Flight", t.flightId); add("Version", t.token); add("Texts sent", String(t.messages.length));
@@ -78,6 +79,7 @@ $("load").onclick = () => load().catch(() => {});
 $("line").onchange = (e) => call("mode", { line: e.target.checked }).then(load).catch(() => {});
 $("guard").onchange = (e) => call("mode", { guard: e.target.checked }).then(load).catch(() => {});
 $("handoff").onchange = (e) => call("mode", { handoff: e.target.checked }).then(load).catch(() => {});
+$("message").onchange = (e) => call("mode", { message: e.target.checked }).then(load).catch(() => {});
 $("reset").onclick = () => call("reset").then(load).catch(() => {});
 if ($("pin").value) { load().catch(() => {}); }
 setInterval(() => { if ($("pin").value && !document.hidden) load().catch(() => {}); }, 3000);

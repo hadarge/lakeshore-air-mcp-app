@@ -30,6 +30,7 @@ type Trip = {
   alternatives: Flight[];
   changes: { from: string; to: string; at: string; fromNumber: string; toNumber: string }[];
   handoff?: boolean;
+  message?: boolean;
 };
 
 const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -198,6 +199,10 @@ $("confirm").addEventListener("click", async () => {
       // The spec's bridge (measurement switch): tell the model. The host decides when it lands.
       const v = (r.structuredContent as { version?: string })?.version ?? "";
       await app.updateModelContext({ content: [{ type: "text", text: `The customer changed the flight in the trip view. Trip ${v}: ${target.number}, departs ${target.departs}, arrives ${target.arrives}.` }] }).catch(() => {});
+    }
+    if (trip.message) {
+      // Option 2 (switch): write into the chat as the user. The host may wait for the user to send it.
+      await app.sendMessage({ role: "user", content: [{ type: "text", text: `I changed my flight to ${target.number}, arriving ${target.arrives}.` }] }).catch(() => {});
     }
     reopen = false;
     picked = null;
